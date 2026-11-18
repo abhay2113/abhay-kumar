@@ -18,11 +18,41 @@
             <div class="menu" onclick="toggleMenu()">☰</div>
             <ul class="nav-links" id="navLinks">
                 <li><a href="../index.html#home">Home</a></li>
-                <li><a href="../index.html#services">Services</a></li>
-                <li><a href="../index.html#courses">Courses</a></li>
-                <li><a href="bookcorse.html">Online Booking</a></li>
-                <li><a href="../index.html#why">About</a></li>
-                <li><a href="bookcorse.html">Contact</a></li>
+                <!-- <li><a href="../index.html#services">Services</a></li> -->
+
+
+                 <li class="dropdown">
+                    <button
+                        class="dropdown-toggle"
+                        type="button"
+                        aria-expanded="false"
+                        aria-controls="coursesDropdown"
+                        onclick="toggleDropdown(event)"
+                    >
+                        Courses <span class="arrow" aria-hidden="true">▾</span>
+                    </button>
+
+                    <ul class="dropdown-menu" id="coursesDropdown">
+
+                        <li>
+                            <a href="HTML/Basic Modular Course.html">Basic Modular Courses</a>
+                        </li>
+
+                        <li>
+                            <a href="HTML/Advance Modular Course.html">Advance Modular Course</a>
+                        </li>
+
+                        <li>
+                            <a href="HTML/Value Added Course.html">Value Added Course</a>
+                        </li>
+
+                    </ul>
+                </li>
+
+                <!-- <li><a href="../index.html#courses">Courses</a></li> -->
+                <li><a href="Book Course.html">Online Booking</a></li>
+                <li><a href="../index.html#why">Why Us</a></li>
+                
             </ul>
         </nav>
     </header>
@@ -65,7 +95,7 @@
                     <div><small>Duration</small><strong id="course-duration"></strong></div>
                     <div><small>Course type</small><strong id="course-type"></strong></div>
                     <div><small>Course fee</small><strong id="course-fee"></strong></div>
-                    <a class="btn primary" href="bookcorse.html">Apply now →</a>
+                    <a class="btn primary" href="Book Course.html">Apply now →</a>
                 </div>
             </div>
         </section>
@@ -82,7 +112,7 @@
                 <ul>
                     <li><a href="../index.html#home">Home</a></li>
                     <li><a href="../index.html#courses">Courses</a></li>
-                    <li><a href="bookcorse.html">Online Booking</a></li>
+                    <li><a href="Book Course.html">Online Booking</a></li>
                 </ul>
             </div>
             <div>
@@ -93,6 +123,7 @@
         <div class="copyright">© 2026 GlobalMove Logistics. All Rights Reserved.</div>
     </footer>
 
+    <script src="../JS/emailjs-config.js"></script>
     <script src="../JS/script.js"></script>
     <script src="../JS/course-detail.js"></script>
 </body>

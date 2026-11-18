@@ -18,7 +18,56 @@ const courses = {
         description: "Basic oil tanker and chemical tanker operations training.",
         duration: "6 days",
         fee: "₹ 4,500",
-        type: "Tanker training"
+        type: "Basic Modular Course"
+    },
+    psf: {
+        name: "PSF",
+        description: "Passenger Ship Familiarization.",
+        duration: "3 days",
+        fee: "Contact us",
+        type: "Basic Modular Course"
+    },
+    "medical-examiners": {
+        name: "Medical Examiners",
+        description: "Familiarisation Course for Medical Examiner of Seafarers.",
+        duration: "1 day",
+        fee: "Contact us",
+        type: "Basic Modular Course"
+    },
+    augff: {
+        name: "AUGFF",
+        description: "Augmentation of Fire Prevention and Fire Fighting Course.",
+        duration: "1 day",
+        fee: "Contact us",
+        type: "Basic Modular Course"
+    },
+    stsdsd: {
+        name: "STSDSD",
+        description: "Security Training for Seafarers with designated Security Duties.",
+        duration: "2 days",
+        fee: "Contact us",
+        type: "Basic Modular Course"
+    },
+    "r-fpff-with-fpff": {
+        name: "R-FPFF with FPFF",
+        description: "Refresher Training For Proficiency In Fire Prevention And Fire Fighting.",
+        duration: "1 day",
+        fee: "Contact us",
+        type: "Basic Modular Course"
+    },
+    "r-pst": {
+        name: "R-PST",
+        description: "Refresher Training For Personal Survival Techniques.",
+        duration: "1 day",
+        fee: "Contact us",
+        type: "Basic Modular Course"
+    },
+    sfs: {
+        name: "sF",
+        description: "SFS.",
+        duration: "1 day",
+        fee: "Contact us",
+        type: "Basic Modular Course"
     },
     pscrb: {
         name: "PSCRB",
@@ -407,13 +456,12 @@ const courses = {
     }
 };
 
-emailjs.init({
-    publicKey: "UPJgWYUTS-uNOESHF"
-});
-
 const course = courses[new URLSearchParams(window.location.search).get("course")];
 
 if (course) {
+    const courseImage = getCourseImageUrl(course.name);
+    document.querySelector(".course-detail-hero").style.backgroundImage =
+        `linear-gradient(90deg, rgba(5, 15, 30, .88), rgba(5, 15, 30, .48)), url("${courseImage}")`;
     document.title = `${course.name} | MarineCourse`;
     document.getElementById("course-name").textContent = course.name;
     document.getElementById("course-category").textContent = course.type;
@@ -453,7 +501,7 @@ if (course) {
         button.disabled = true;
         status.textContent = "Sending your enquiry...";
 
-        emailjs.send("service_4ltkjwh", "template_t3jel75", templateParams)
+        emailjs.send(window.EMAILJS_CONFIG.serviceId, window.EMAILJS_CONFIG.templateId, templateParams)
             .then(function () {
                 status.textContent = "Your enquiry was sent successfully. We will contact you soon.";
                 form.reset();
